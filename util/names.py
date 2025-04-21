@@ -4,6 +4,14 @@
 # @Email    : jiachenghuang0601@gmail.com
 
 
+class InputType:
+    CSV = 'csv'
+
+
+class RawDataName:
+    STD_FORM_DF = 'std_form_df'
+
+
 class LPParts:
     OBJ = 'obj'
     CONSTR_MATRIX = 'constr_matrix'
