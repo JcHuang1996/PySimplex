@@ -30,9 +30,11 @@ def test_csv_standard_form():
     lp_input_reader.read()
 
     lp_standard_form = lp_input_reader.raw_data
+    logger.info('input finish')
 
     input_processor = DataProcessor(lp_standard_form)
-    input_processor.LPDecomp()
+    input_processor.LPInputDecomp()
+    logger.info('standard form process finish')
 
 
 if __name__ == '__main__':

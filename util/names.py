@@ -12,8 +12,13 @@ class RawDataName:
     STD_FORM_DF = 'std_form_df'
 
 
-class LPParts:
+class DataName:
+    CONSTR_DICT = 'constr_dict'
     OBJ = 'obj'
-    CONSTR_MATRIX = 'constr_matrix'
-    RHS = 'rhs'
-    VAR_BOUND = 'var_bound'
+    RHS_LIST = 'rhs_list'
+    VAR_COLUMNS_DICT = 'var_columns_dict'
+    VAR_NAME = 'var_name'
+
+
+class PrefixName:
+    CONSTR_PREFIX = 'cons_'

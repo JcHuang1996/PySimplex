@@ -3,5 +3,5 @@
 # @Author   : J. Huang
 # @Email    : jiachenghuang0601@gmail.com
 
-from data_read.reader_main import DataReader
-from data_process.data_processor import DataProcessor
+from .data_read.reader_main import DataReader
+from .data_process.data_processor import DataProcessor
