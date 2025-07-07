@@ -11,6 +11,7 @@ from dao import DataReader
 from dao.data_process.data_processor import DataProcessor
 from util.names import InputType, RawDataName
 from util.project_logger import init_logger
+from algo.algo_simplex_method import AlgoSimplexMethod
 
 
 logger = logging.getLogger(__name__)
@@ -33,8 +34,13 @@ def test_csv_standard_form():
     logger.info('input finish')
 
     input_processor = DataProcessor(lp_standard_form)
-    input_processor.LPInputDecomp()
+    input_processor.SolvingDataInitialize()
+    input_processor.STDFormInitialize()
     logger.info('standard form process finish')
+
+    SimplexLPSolving = AlgoSimplexMethod(input_processor.data)
+    SimplexLPSolving.SolveLPBasic()
+    logger.info('SimplexLPSolving process finish')
 
 
 if __name__ == '__main__':
