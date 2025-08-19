@@ -31,6 +31,10 @@ class DataProcessor(object):
         logger.info('The solving status is set to solving.')
         self.data[DataName.OPTIMAL_LABEL] = ConstantName.LP_STATUS_SOLVING
 
+        logger.info('Ready to record solving process')
+        self.data[DataName.RECORD_PIVOT_ROW_DICT] = {}
+        self.data[DataName.RECORD_ENTERING_VAR_LIST] = {}
+        self.data[DataName.RECORD_LP_SIMPLEX_TABLEAU] = {}
 
     def STDFormInitialize(self):
 

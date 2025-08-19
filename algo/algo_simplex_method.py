@@ -20,6 +20,7 @@ class AlgoSimplexMethod:
     def __init__(self, processed_data):
         self.data = processed_data
         self.data[DataName.ITER_NUMBER] = 0
+        self.result = {}
 
 
     def SolveLPBasic(self):
@@ -42,9 +43,13 @@ class AlgoSimplexMethod:
 
             self.PivotOperation()
 
-            self.data[DataName.ITER_NUMBER] += 1
+            if self.data[DataName.OPTIMAL_LABEL] == ConstantName.LP_STATUS_SOLVING:
+                self.RecordSolvingProcess()
+                self.data[DataName.ITER_NUMBER] += 1
 
         logger.info('End solving LP')
+
+        self.GetResult()
 
 
     def PivotOperation(self):
@@ -149,4 +154,18 @@ class AlgoSimplexMethod:
         # update the pivot row index in data
         self.data[DataName.CURRENT_PIVOT_ROW_DICT] = {entering_var: pivot_row_idx}
 
+    def RecordSolvingProcess(self):
+        iter_num = self.data[DataName.ITER_NUMBER]
+        self.data[DataName.RECORD_LP_SIMPLEX_TABLEAU][iter_num] = self.data[DataName.CURRENT_LP_SIMPLEX_TABLEAU].copy()
+        self.data[DataName.RECORD_ENTERING_VAR_LIST][iter_num] = self.data[DataName.CURRENT_ENTERING_VAR_LIST]
+        self.data[DataName.RECORD_PIVOT_ROW_DICT][iter_num] = self.data[DataName.CURRENT_PIVOT_ROW_DICT]
 
+    def GetResult(self):
+
+        logger.info('Start process result')
+
+        if self.data[DataName.OPTIMAL_LABEL] == ConstantName.LP_STATUS_OPT:
+            self.result[ResultName.FINAL_SIMPLEX_TABLEAU] = self.data[DataName.CURRENT_LP_SIMPLEX_TABLEAU].copy()
+            self.result[ResultName.OBJ_VALUE] = self.result[ResultName.FINAL_SIMPLEX_TABLEAU][SimplexTableauHeader.RHS_COL][SimplexTableauHeader.OBJ_ROW]
+
+        logger.info('End process result')

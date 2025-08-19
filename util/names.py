@@ -28,6 +28,15 @@ class DataName:
     OPTIMAL_LABEL = 'opt_label'                                 # integer value. 1: optimal solution is found; 0: solving; -1: unbounded
     ITER_NUMBER = 'iter_num'                                    # integer, the number of iterations has been implemented
 
+    RECORD_LP_SIMPLEX_TABLEAU = 'record_lp_simplex_tableau'     # dict, the simplex tableau of each iteration
+    RECORD_ENTERING_VAR_LIST = 'record_entering_var_list'       # dict, the entering var list of each iteration
+    RECORD_PIVOT_ROW_DICT = 'record_pivot_row_dict'             # dict, the pivot row of each iteration
+
+
+class ResultName:
+    OBJ_VALUE = 'obj_value'                                     # float, the objective value of the lp
+    FINAL_SIMPLEX_TABLEAU = 'final_simplex_tableau'             # dataframe, the final simplex tableau of the solved LP
+
 
 class ConstantName:
     OBJ_ROW = 'OBJ_ROW'
